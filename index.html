@@ -148,6 +148,148 @@ dialog{padding:0;border:1px solid var(--line);border-radius:22px;color:var(--ink
 .heatmap-sources{display:flex;flex-shrink:0;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:7px;padding:2px;margin-top:2px}.heatmap-sources .heatmap-source{margin:0;border-color:transparent;background:transparent}.heatmap-sources .heatmap-source[aria-pressed=true]{background:var(--surface);color:var(--ink);border-color:var(--line);box-shadow:0 1px 2px #18212b0b}
 
 </style>
+<style>
+/* Scoped to Learn. Dimensions follow the reference's document layout. */
+.sx-learn{--sx-text:#202124;--sx-muted:#5f6368;--sx-border:#dadce0;--sx-blue:#1a73e8;--sx-bg:#fff;--sx-nav:#fff;--lr-canvas:#e8eaed;--lr-plot:#f1f3f8;--lr-grid:#fff;--lr-note:#fef7e0;--lr-terms:#f3e8fd;--lr-purple:#8430ce;background:var(--lr-canvas);font-family:Arial,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.5}
+.sx-learn .sx-header{height:48px;padding:0 24px;gap:24px;box-shadow:0 1px 2px #00000014;border-bottom:1px solid #dadce0}
+.lr-brand{display:flex;align-items:center;gap:10px;flex:0 0 216px;border:0;background:none;padding:0;font-size:20px!important;font-weight:400;color:var(--sx-muted)!important;text-align:left;white-space:nowrap}
+.lr-brand svg{width:24px;height:24px}
+.sx-learn .sx-mode-nav{margin-right:auto;gap:24px}
+.sx-learn .sx-mode-nav button{padding:0 6px;color:var(--sx-muted);font-size:14px;font-weight:400}
+.sx-learn .sx-mode-nav button.active{color:var(--sx-text)}
+.sx-learn .sx-mode-nav button.active:after{height:3px;left:6px;right:6px;background:var(--sx-text)}
+.sx-learn .sx-mode-nav button>svg{display:none}
+.sx-learn .sx-header-actions{gap:16px}
+.sx-learn .sx-source-button{font-size:14px!important;color:var(--sx-muted)!important}
+.lr-course-bar{height:104px;background:var(--sx-bg);border-bottom:1px solid var(--sx-border);box-shadow:0 2px 3px #00000024;padding:24px 24px 0}
+.lr-course-title{font-size:20px;line-height:28px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:400}
+.lr-course-tabs{height:51px;display:flex;align-items:stretch;gap:32px}
+.lr-course-tabs button{border:0;background:none;padding:0;color:var(--sx-muted);font-size:14px;position:relative}
+.lr-course-tabs button[aria-current="page"]{color:var(--sx-text)}
+.lr-course-tabs button[aria-current="page"]:after{content:"";position:absolute;bottom:0;height:3px;left:0;right:0;background:var(--sx-text);border-radius:3px 3px 0 0}
+.sx-learn .sx-workspace{position:relative;display:block;min-height:calc(100vh - 152px)}
+.sx-learn .sx-learning-content{display:block;position:relative;padding:24px max(24px,calc((100% - 936px)/2)) 64px;min-width:0;background:var(--lr-canvas);margin:0}
+.sx-learn .sx-article{width:100%;max-width:936px;padding:40px;margin:0;border:1px solid var(--sx-border);border-radius:2px;background:var(--sx-bg);color:var(--sx-text);box-shadow:0 1px 2px #0000000d;font-size:16px;line-height:24px;overflow-wrap:break-word}
+.lr-utility{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;min-height:24px}
+.sx-learn .sx-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;font-size:12px;line-height:20px;color:var(--sx-muted)}
+.sx-learn .sx-breadcrumb button{background:none;border:0;padding:0;font-size:inherit;color:inherit}
+.sx-learn .sx-breadcrumb span{margin:0;color:var(--sx-muted)}
+.lr-reference{flex-shrink:0;border:0;background:none;font-size:12px!important;color:var(--sx-muted)!important;padding:0;display:flex;align-items:center;gap:5px}
+.sx-learn .sx-article-title{gap:5px;flex-wrap:wrap;margin-bottom:24px;align-items:center}
+.sx-learn .sx-article-title h1{font-size:32px;line-height:40px;font-weight:400;letter-spacing:0;flex:0 1 auto;margin:0 4px 0 0}
+.sx-learn .sx-article-title>.sx-icon{width:36px;height:36px;border:1px solid #f1f3f4;border-radius:2px;color:var(--sx-muted)!important}
+.lr-note-button{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--sx-border);background:var(--sx-bg);border-radius:2px;min-height:36px;padding:0 22px;color:var(--sx-blue)!important;font-size:14px!important}
+.sx-learn .sx-summary{border:0;border-radius:2px;background:#e8f0fe;margin:0 0 16px;color:#185abc}
+.sx-learn .sx-summary summary{height:40px;padding:8px 16px;font-size:14px;line-height:24px;color:#185abc;gap:12px}
+.sx-learn .sx-summary summary svg:first-child{color:#4285f4}
+.sx-learn .sx-summary summary svg:last-child{transition:transform .15s}
+.sx-learn .sx-summary[open] summary svg:last-child{transform:rotate(180deg)}
+.sx-learn .sx-summary ul{margin:0;padding:0 24px 16px 44px;font-size:14px;line-height:24px;color:#174ea6}
+.sx-learn .sx-summary li{margin:4px 0}
+.sx-learn .sx-article p{margin:16px 0;line-height:24px}
+.sx-learn .sx-article a{color:#1967d2;text-decoration:none;font-weight:500}
+.sx-learn .sx-article a:hover{text-decoration:underline}
+.sx-learn .sx-article strong{font-weight:600}
+.sx-learn .sx-article h2{font-size:24px;line-height:32px;letter-spacing:0;font-weight:400;margin:40px 0 16px;scroll-margin-top:72px;gap:8px}
+.sx-learn .sx-article h2 .sx-icon{width:26px;height:26px}
+.sx-learn .sx-article section[id]{scroll-margin-top:72px}
+.sx-learn .sx-article ul{padding-left:28px;margin:16px 0}
+.sx-learn .sx-article li{margin:8px 0}
+.lr-figure{margin:16px 0 32px}
+.lr-figure>svg{display:block;width:100%;height:auto;border:1px solid #f1f3f4;font-family:Arial,"PingFang SC",sans-serif}
+.lr-figure text{font-size:14px;fill:var(--sx-text)}
+.lr-figure figcaption{margin:16px 0;font-size:16px;line-height:24px;color:var(--sx-text)}
+.lr-note{background:var(--lr-note);padding:16px 40px;margin:24px -40px;font-size:14px;line-height:24px}
+.lr-table-scroll{width:100%;overflow-x:auto;margin:24px 0}
+.sx-learn .sx-lesson-table{width:100%;margin:0;border-collapse:collapse;font-size:14px;line-height:24px}
+.sx-learn .sx-lesson-table th{background:var(--lr-canvas);color:var(--sx-text);font-weight:600}
+.sx-learn .sx-lesson-table th,.sx-learn .sx-lesson-table td{border:1px solid var(--sx-border);padding:16px;text-align:left;vertical-align:top}
+.lr-math{font-family:Georgia,"Times New Roman",serif;font-size:20px;white-space:nowrap}
+.sx-learn .sx-number-figure{padding:24px;margin:24px 0;border:1px solid var(--sx-border);border-radius:0;background:var(--lr-plot)}
+.sx-learn .sx-figure-label{font-size:14px;color:var(--sx-muted)}
+.sx-learn .sx-number-figure figcaption{font-size:14px;line-height:24px;color:var(--sx-muted);margin-top:8px}
+.lr-expand{margin:24px 0 32px}
+.lr-expand summary{display:flex;gap:8px;align-items:center;cursor:pointer;list-style:none;font-weight:600;line-height:24px;padding:8px 0}
+.lr-expand summary::-webkit-details-marker{display:none}
+.lr-expand-symbol{width:20px;height:20px;position:relative;background:#5f6368;border-radius:50%;flex-shrink:0}
+.lr-expand-symbol:before,.lr-expand-symbol:after{content:"";background:white;position:absolute;left:5px;right:5px;top:9px;height:2px}
+.lr-expand-symbol:after{transform:rotate(90deg)}
+.lr-expand[open] .lr-expand-symbol:after{display:none}
+.lr-expand>div{padding-left:28px}
+.sx-learn .sx-check{padding:0;background:var(--sx-bg);border:1px solid var(--sx-border);border-radius:8px;overflow:hidden;margin:16px 0}
+.sx-learn .sx-check h3{padding:16px 24px;margin:0;background:var(--lr-canvas);font-size:14px;font-weight:600;line-height:22px}
+.sx-learn .sx-check-choices{gap:0}
+.sx-learn .sx-check-choices button{display:flex;gap:12px;flex-direction:row-reverse;justify-content:space-between;min-height:56px;padding:16px 24px;border:0;border-top:1px solid var(--sx-border);border-radius:0;font-size:16px;line-height:24px;color:var(--sx-text)}
+.sx-learn .sx-check-choices button:hover:not(:disabled){background:#f8f9fa}
+.sx-learn .sx-radio{width:18px;height:18px;flex-shrink:0;border:2px solid #5f6368;border-radius:2px}
+.sx-learn .sx-check-choices button.correct{background:#e6f4ea;color:#137333}
+.sx-learn .sx-check-choices button.wrong{background:#fce8e6;color:#a50e0e}
+.sx-learn .correct .sx-radio{border-color:#188038}.sx-learn .wrong .sx-radio{border-color:#c5221f}
+.sx-learn .sx-check-feedback{border-top:1px solid var(--sx-border);padding:16px 24px;font-size:14px}
+.sx-learn .sx-check-feedback p{margin:8px 0;font-size:14px}
+.lr-terms{background:var(--lr-terms);color:var(--lr-purple);margin:24px -40px 0;padding:16px 40px 24px;font-size:14px;line-height:24px}
+.lr-terms>strong{display:flex;gap:12px;align-items:center}
+.lr-terms>strong span{display:inline-grid;place-items:center;width:20px;height:20px;background:var(--lr-purple);color:white;font-size:14px;border-radius:1px}
+.sx-learn .lr-terms ul{margin:8px 0 0;padding-left:74px}
+.lr-terms button{padding:0;border:0;background:none;color:inherit;font-size:14px;text-decoration:underline;text-underline-offset:2px}
+.sx-learn .sx-reading-tools{margin:24px 0;gap:24px;justify-content:flex-start;flex-wrap:wrap}
+.sx-learn .sx-reading-tools button{font-size:14px!important}
+.sx-learn .sx-lesson-pagination{margin:24px -40px 0;padding:24px 40px;gap:24px;border-top:1px solid var(--sx-border);border-bottom:1px solid var(--sx-border)}
+.sx-learn .sx-lesson-pagination button{font-size:14px;color:var(--sx-blue);max-width:48%}
+.sx-learn .sx-lesson-pagination small{font-size:12px;color:var(--sx-muted)}
+.sx-learn .sx-lesson-pagination strong{font-size:14px;font-weight:400}
+.sx-learn .sx-article-footer{font-size:12px;line-height:20px;color:var(--sx-muted);border:0;padding:24px 0 0}
+.lr-toc{position:fixed;top:176px;left:calc(50% + 492px);width:220px;z-index:20;font-size:12px}
+.lr-toc summary{display:flex;align-items:center;gap:8px;color:var(--sx-muted);cursor:pointer;list-style:none;padding:4px 8px}
+.lr-toc summary::-webkit-details-marker{display:none}
+.lr-toc[open]{border-left:4px solid #5a9ed6}
+.lr-toc[open] summary{font-weight:600;color:var(--sx-text)}
+.lr-toc[open] summary>svg{display:none}
+.lr-toc nav{display:flex;flex-direction:column}
+.lr-toc nav button{padding:3px 12px;text-align:left;border:0;background:none;color:var(--sx-text);font-size:12px;line-height:18px}
+.lr-toc nav button.active{color:#185abc}
+.sx-learn .sx-sidebar{position:fixed;top:152px;bottom:0;left:0;width:264px;height:calc(100dvh - 152px);padding:24px 0 16px;background:var(--sx-bg);border-right:1px solid var(--sx-border);box-shadow:none;z-index:25}
+.sx-learn .sx-sidebar-heading{padding:0 24px;font-size:14px;margin-bottom:14px}
+.sx-learn .sx-sidebar-heading strong{font-size:14px;font-weight:400}
+.sx-learn .sx-search{background:#f1f3f4;border:0;border-radius:2px;margin:0 24px 24px;padding:7px 10px}
+.sx-learn .sx-search input{font-size:12px;color:var(--sx-text)}
+.sx-learn .sx-chapter{border:0;padding:0 0 12px}
+.sx-learn .sx-chapter summary{font-size:12px;padding:4px 14px;color:var(--sx-text)}
+.sx-learn .sx-unit{margin:0;padding:0}
+.sx-learn .sx-unit-title{font-size:12px;line-height:20px;padding:8px 24px 4px;color:var(--sx-muted)}
+.sx-learn .sx-unit>button{padding:4px 16px 4px 38px;gap:6px;min-height:28px;border-radius:0 18px 18px 0;margin:0 12px 0 0;width:calc(100% - 12px);color:var(--sx-text);font-size:12px;line-height:20px}
+.sx-learn .sx-unit>button.active{background:#e8f0fe;color:#185abc}
+.sx-learn .sx-unit>button>small:last-child{display:none}
+.sx-learn .sx-back-outline{font-size:12px;margin:16px 24px 0;padding-top:16px}
+.sx-learn .sx-open-sidebar{position:fixed;left:0;top:auto;bottom:24px;width:32px;height:40px;border:1px solid var(--sx-border);border-left:0;border-radius:0 22px 22px 0;background:var(--sx-bg);box-shadow:0 2px 4px #00000026;z-index:28}
+.sx-learn .sx-open-sidebar svg{width:18px;height:18px}
+.sx-learn .sx-mobile-directory{display:none!important}
+.sx-learn .sx-source-panel{top:48px}
+.sx-learn .sx-ai-panel.is-mobile-open{display:flex;position:fixed;top:64px;bottom:16px;right:16px;width:360px;height:auto;min-height:0;z-index:45;border-radius:4px;box-shadow:0 6px 24px #00000026}
+.sx-learn .ai-mobile-backdrop{display:block;position:fixed;inset:48px 0 0;z-index:44;border:0;background:#20212426}
+.sx-learn .sx-ai-panel.is-mobile-open~.ai-mobile-launcher{display:none}
+.sx-learn .ai-mobile-launcher{font-size:14px!important;color:#1967d2!important;border-radius:24px}
+.sx-learn .sx-directory-backdrop{display:none}
+@media(min-width:1460px){.sx-learn:not(.sx-nav-collapsed) .sx-learning-content{padding-left:288px;padding-right:max(24px,calc(100% - 1224px))}}
+@media(max-width:1459px){.lr-toc{left:auto;right:24px;top:176px;width:200px}.lr-toc:not([open]){width:auto;right:8px}.lr-toc[open]{background:var(--sx-bg);box-shadow:0 4px 18px #0000001f;padding:8px}.lr-toc:not([open]) summary span{display:none}.sx-learn .sx-sidebar{box-shadow:4px 0 14px #0000001a}.sx-learn .sx-directory-backdrop{display:block;position:fixed;inset:152px 0 0;z-index:24;background:#20212426;border:0}}
+@media(max-width:1000px){.lr-brand{flex-basis:auto;margin-right:20px}.sx-learn .sx-mode-nav{gap:12px}.sx-learn .sx-learning-content{padding:24px 24px 64px}.lr-toc{top:160px;right:8px}.lr-toc:not([open]) summary{background:var(--sx-bg);border:1px solid var(--sx-border);border-radius:3px}.sx-learn .sx-header{gap:16px}.sx-learn .sx-article{padding:32px}.lr-note,.lr-terms{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px}.sx-learn .sx-lesson-pagination{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px}}
+@media(max-width:760px){.sx-learn .sx-header{height:48px;padding:0 16px;gap:12px}.lr-brand{font-size:16px!important;gap:7px;margin-right:0}.lr-brand svg{width:20px;height:20px}.sx-learn .sx-mode-nav{gap:6px;margin:0 auto}.sx-learn .sx-mode-nav button{font-size:12px;padding:0 4px}.sx-learn .sx-mode-nav button>span{display:block}.sx-learn .sx-mode-nav button.active:after{left:3px;right:3px}.sx-learn .sx-header-actions{gap:0}.sx-learn .sx-header-actions>.sx-icon{display:none}.sx-learn .sx-source-button{padding:6px}.sx-learn .sx-source-button>span{display:none}.lr-course-bar{height:96px;padding:20px 16px 0}.lr-course-title{font-size:18px;line-height:24px}.lr-course-tabs{height:51px}.sx-learn .sx-workspace{min-height:calc(100dvh - 144px)}.sx-learn .sx-learning-content{padding:16px 0 40px}.sx-learn .sx-article{padding:24px;border-left:0;border-right:0;border-radius:0}.sx-learn .sx-article-title h1{font-size:28px;line-height:36px}.lr-note-button{padding:0 12px;min-height:32px;font-size:12px!important}.sx-learn .sx-article-title>.sx-icon{width:30px;height:30px}.lr-utility{margin-bottom:16px}.sx-learn .sx-breadcrumb{font-size:11px;gap:6px}.lr-reference{font-size:11px!important}.sx-learn .sx-article h2{font-size:24px;line-height:32px}.lr-note,.lr-terms{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px}.sx-learn .sx-lesson-table th,.sx-learn .sx-lesson-table td{padding:12px;min-width:100px;font-size:14px}.sx-learn .sx-number-figure{padding:12px}.sx-learn .sx-figure-label{font-size:12px}.lr-figure text{font-size:16px}.lr-figure figcaption{font-size:14px}.sx-learn .sx-lesson-pagination{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px}.sx-learn .sx-check h3,.sx-learn .sx-check-choices button,.sx-learn .sx-check-feedback{padding:16px}.sx-learn .sx-sidebar{top:48px;height:calc(100dvh - 48px);width:min(280px,85vw);transform:none}.sx-learn .sx-directory-backdrop{inset:48px 0 0}.lr-toc{top:153px;right:4px}.lr-toc[open]{right:12px;max-width:calc(100vw - 24px)}.sx-learn .sx-ai-panel.is-mobile-open{top:60px;left:12px;right:12px;width:auto;bottom:12px}.sx-learn .sx-open-sidebar{display:grid}.sx-learn .sx-source-panel{top:48px}.sx-learn .sx-reading-tools{gap:16px}}
+@media(max-width:380px){.lr-brand>span{display:none}.sx-learn .sx-header{gap:8px}.sx-learn .sx-article-title{gap:4px}.lr-note-button{margin-left:0}.sx-learn .sx-breadcrumb{max-width:70%}}
+[data-theme="dark"] .sx-learn{--sx-text:#e8eaed;--sx-muted:#bdc1c6;--sx-border:#3c4043;--sx-blue:#8ab4f8;--sx-bg:#202124;--sx-nav:#202124;--lr-canvas:#171717;--lr-plot:#292c32;--lr-grid:#3c4043;--lr-note:#413a25;--lr-terms:#332541;--lr-purple:#d7aefb}
+[data-theme="dark"] .sx-learn .sx-summary{background:#233a5c;color:#aecbfa}[data-theme="dark"] .sx-learn .sx-summary summary,[data-theme="dark"] .sx-learn .sx-summary ul{color:#aecbfa}[data-theme="dark"] .sx-learn .sx-search{background:#303134}[data-theme="dark"] .sx-learn .sx-unit>button.active{background:#233a5c;color:#aecbfa}[data-theme="dark"] .sx-learn .sx-article a{color:#8ab4f8}[data-theme="dark"] .sx-learn .sx-check-choices button.correct{background:#193d2b;color:#81c995}[data-theme="dark"] .sx-learn .sx-check-choices button.wrong{background:#4a2525;color:#f28b82}[data-theme="dark"] .sx-learn .sx-check-choices button:hover:not(:disabled){background:#303134}
+
+.sx-learn .lr-inline-link{color:#1967d2;border:0;background:none;padding:0;font:inherit;font-weight:500;cursor:pointer}.sx-learn .lr-inline-link:hover{text-decoration:underline}.sx-learn .lr-toc{display:block;top:calc(var(--lr-nav-top,152px) + 24px)}.sx-learn .sx-sidebar{top:var(--lr-nav-top,152px);height:calc(100dvh - var(--lr-nav-top,152px))}[data-theme="dark"] .sx-learn .lr-inline-link{color:#8ab4f8}
+@media(max-width:760px){.sx-learn .sx-sidebar{top:48px;height:calc(100dvh - 48px)}.sx-learn .lr-toc{top:calc(var(--lr-nav-top,144px) + 9px)}}
+
+/* Desktop directories occupy columns, as on the reference page. */
+@media(min-width:1200px){.sx-learn:not(.sx-nav-collapsed) .sx-learning-content{padding-left:288px;padding-right:264px}.sx-learn .sx-sidebar{box-shadow:none}.sx-learn .sx-directory-backdrop{display:none}.sx-learn:not(.sx-nav-collapsed) .lr-toc{left:auto;right:24px;width:216px}.sx-learn .lr-toc[open]{background:none;box-shadow:none;padding:0}.sx-learn .lr-toc:not([open]){width:auto}.sx-learn .sx-back-outline{background:none;border:0;border-top:1px solid var(--sx-border);border-radius:0;box-shadow:none}}
+@media(min-width:761px) and (max-width:1199px){.sx-learn .sx-directory-backdrop{top:var(--lr-nav-top,152px)}}
+
+@media(max-width:600px){.lr-brand>span{display:none}.sx-learn .sx-mode-nav{gap:12px}.sx-learn .sx-mode-nav button{white-space:nowrap;flex-shrink:0}.sx-learn .sx-header{gap:8px}.lr-figure text{font-size:26px}}
+
+@media(max-width:600px){.lr-figure .lr-axis-title{display:none}}
+
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -579,6 +721,41 @@ window.createAdaptiveExperience=function(ctx){
 
 </script>
 <script>
+/* Reading-first lesson body. Original Chinese examples, reference-aligned presentation. */
+'use strict';
+window.learningArticle = function ({esc, glyph, action, heading, practice, numberLine, topic:t, lesson:l}) {
+  const special=l?.number==='1.1';
+  const anchors=special ? [['concept','正数、负数和零'],['notation','用符号表示相反意义'],['example','表示数量的例子'],['convention','先确定正的意义'],['practice','检查理解']] : [['concept',t.name],['example','应用举例'],['practice','检查理解']];
+  const table=(heads,rows)=>`<div class="lr-table-scroll"><table class="sx-lesson-table"><thead><tr>${heads.map(x=>`<th scope="col">${x}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const section=(id,title,body)=>`<section aria-labelledby="sx-${id}">${heading(id,title)}${body}</section>`;
+  const summary=(l?.summary||'结合教材，理解概念与适用条件。').split('。').filter(Boolean);
+  const overview=special ? `<p><button class="lr-inline-link" data-action="sx-anchor" data-anchor="concept">正数和负数</button>可以表示具有相反意义的量。选定一种意义为正，与它相反的意义就用负数表示。符号帮助我们同时说清楚<strong>数量</strong>和<strong>方向</strong>。</p><p>观察下面的温度示意图：以 0 ℃ 为参照，零上 3 ℃ 记作 +3 ℃，零下 3 ℃ 记作 −3 ℃。两个温度都与 0 ℃ 相差 3 ℃，但位于参照值的两侧。</p>
+    <figure class="lr-figure"><svg viewBox="0 0 840 340" role="img" aria-labelledby="lr-temperature-title lr-temperature-desc"><title id="lr-temperature-title">正数、零和负数表示温度</title><desc id="lr-temperature-desc">左侧温度为正三摄氏度，中间为零摄氏度，右侧为负三摄氏度。蓝线表示零摄氏度的共同参照。</desc>
+      <rect x="72" y="20" width="730" height="250" fill="var(--lr-plot)"/>
+      ${[-4,-2,0,2,4].map(v=>`<path d="M72 ${145-v*25}H802" stroke="var(--lr-grid)"/><text x="58" y="${150-v*25}" text-anchor="end">${v>0?'+':''}${v}</text>`).join('')}
+      <text class="lr-axis-title" x="28" y="147" text-anchor="middle" transform="rotate(-90 28 147)">温度（℃）</text>
+      <path d="M72 145H802" stroke="#4285f4" stroke-width="2"/>
+      ${[[220,3,'零上 3 ℃'],[440,0,'0 ℃'],[660,-3,'零下 3 ℃']].map(([x,v,label])=>`<path d="M${x} 145V${145-v*25}" stroke="#5f6368" stroke-width="2"/><circle cx="${x}" cy="${145-v*25}" r="5" fill="#d45c87"/><text x="${x+15}" y="${150-v*25}" fill="#202124">${v>0?'+':''}${v} ℃</text><text x="${x}" y="296" text-anchor="middle">${label}</text>`).join('')}
+      <path d="M342 324h30" stroke="#4285f4" stroke-width="2"/><text x="382" y="329">共同的参照：0 ℃</text>
+    </svg><figcaption><strong>图 1.</strong> 同样相差 3 ℃，正负号区分参照值的两侧。</figcaption></figure>` : `<p>${esc(l?.summary||`阅读教材中的“${t.name}”，结合定义和例题理解这一节。`)}</p>`;
+  let body;
+  if(special){
+    body=section('concept','正数、负数和零',`<p>像 1、2.5、⅓ 这样大于 0 的数叫作<strong>正数</strong>。在正数前面加上“−”号，就得到负数，例如 −1、−2.5、−⅓。</p><p>写数时，需要注意以下两点：</p><ul><li>正数前面的“+”号可以省略。例如，+3 与 3 表示同一个数。</li><li>负数前面的“−”号不能省略。例如，−3 与 3 表示不同的数。</li></ul><aside class="lr-note"><strong>注意：</strong>0 既不是正数，也不是负数。0 ℃ 是一个具体的温度，不能理解为“没有温度”。</aside>`)
+      +section('notation','用符号表示相反意义',`<p>正负号的含义取决于事先确定的约定。下面的例子使用不同的参照，但都遵循同一个规则。</p>${table(['情境','约定正的意义','正数的例子','负数的例子'],[['行走方向','向东','+5 米：向东 5 米','−5 米：向西 5 米'],['收支变化','收入','+30 元：收入 30 元','−30 元：支出 30 元'],['海拔高度','高于海平面','+100 米：高于海平面 100 米','−100 米：低于海平面 100 米'],['温度','高于 0 ℃','+3 ℃：零上 3 ℃','−3 ℃：零下 3 ℃']])}<p>这里的“正”和“负”描述相反的意义，不表示事情的好坏。判断一个量应该带什么符号，要先看题目给出的约定。</p>`)
+      +section('example','表示数量的例子',`<p>假设记录账户的收支变化，并规定<strong>收入为正</strong>。收入 20 元、支出 30 元以及没有收支变化，可以分别写成下面的形式。</p>${table(['实际情况','判断过程','记录结果'],[['收入 20 元','与约定的正的意义相同','<span class="lr-math">+20</span> 元'],['支出 30 元','与约定的正的意义相反','<span class="lr-math">−30</span> 元'],['没有收支变化','变化量为零','<span class="lr-math">0</span> 元']])}<p>因此，支出 30 元记作 <strong>−30 元</strong>。这里记录的是账户的变化量；变化量为 0，并不意味着账户余额为 0。</p>`)
+      +section('convention','先确定正的意义',`<p>同一次行走，在不同的约定下可以有不同的表示。向西走 5 米：如果规定向东为正，就记作 −5 米；如果规定向西为正，就记作 +5 米。</p><p>表示数量前，先说清楚哪一种意义为正，再确定符号，最后写出数量和单位。</p>${numberLine()}<details class="lr-expand" id="lr-sign-guidance"><summary><span class="lr-expand-symbol" aria-hidden="true"></span>怎样检查正负号是否用对？</summary><div><ul><li>找到题目中规定的正的意义。</li><li>判断实际情况与约定的意义相同还是相反。</li><li>检查数量、符号和单位是否齐全。</li></ul><p>如果题目没有给出约定，应先说明自己的约定，不能只凭“增加”“减少”猜测符号。</p></div></details>`)
+      +section('practice','检查理解',`<p>沿用“向东为正”的约定，判断下面的记录。</p>${practice(l)}`);
+  }else{
+    body=section('concept',esc(t.name),`<p>${esc(l?.summary||'本节暂未编写讲解，可以打开教材原文阅读。')}</p>`)
+      +section('example','应用举例',l?`<p>${esc(l.diagnostic.question)}</p>${table(['分析','结论'],[[esc(l.diagnostic.explanation),esc(l.diagnostic.choices[l.diagnostic.answer])]])}`:'<p>通过右上角的教材入口查看本节例题。</p>')
+      +section('practice','检查理解',practice(l));
+  }
+  const terms=special?[['正数','concept'],['负数','concept'],['零','concept'],['正负号的约定','convention']]:[[t.name,'concept']];
+  return {anchors,summary:`<ul>${summary.map(x=>`<li>${esc(x)}。</li>`).join('')}</ul>`,overview,body,terms:`<aside class="lr-terms" aria-label="关键概念"><strong><span aria-hidden="true">文</span>关键概念</strong><ul>${terms.map(([label,id])=>`<li>${action('anchor',esc(label),`data-anchor="${id}"`)}</li>`).join('')}</ul></aside>`};
+};
+
+</script>
+<script>
 /* Independent study pages. Authored examples and local-only review records. */
 'use strict';
 window.createStudyExperience = function (ctx) {
@@ -606,7 +783,7 @@ window.createStudyExperience = function (ctx) {
   const navigate=(id,mode=s.mode)=>ctx.navigate(id,mode);
   function updateTopic(id,fn){return ctx.mutate(course().id,c=>({...c,sections:c.sections.map(ch=>({...ch,topics:ch.topics.map(t=>t.id===id?fn(t):t)}))}));}
   function updateLearning(id,fn){return updateTopic(id,t=>({...t,learning:fn(t.learning||{})}));}
-  function redraw(){const nav=document.querySelector('.sx-sidebar-scroll'),scroll=nav?.scrollTop||0,y=window.scrollY;document.querySelectorAll('.sx-chapter[data-chapter]').forEach(el=>{s.chapterOpen[el.dataset.chapter]=el.open;});ctx.render();if(nav)document.querySelector('.sx-sidebar-scroll')?.scrollTo(0,scroll);window.scrollTo(0,y);}
+  function redraw(){const nav=document.querySelector('.sx-sidebar-scroll'),scroll=nav?.scrollTop||0,y=window.scrollY;document.querySelectorAll('.sx-chapter[data-chapter]').forEach(el=>{s.chapterOpen[el.dataset.chapter]=el.open;});const expanded=[...document.querySelectorAll('.sx-learn details[id]')].map(el=>[el.id,el.open]);ctx.render();for(const [id,open] of expanded){const el=document.getElementById(id);if(el)el.open=open;}if(nav)document.querySelector('.sx-sidebar-scroll')?.scrollTo(0,scroll);window.scrollTo(0,y);}
   function enter(id,mode){
     const changed=s.topicId!==id||s.mode!==mode||s.courseId!==course().id;
     if(changed){chat.leave();adaptive.leave();s={...s,topicId:id,mode,courseId:course().id,collapsed:true,index:0,flipped:false,done:false,choice:null,seen:new Set(),order:[],number:3,ask:false,undo:null,chapterOpen:s.courseId===course().id?s.chapterOpen:{}};const active=course().sections.find(ch=>ch.topics.some(t=>t.id===id));if(active)s.chapterOpen[active.id]=true;if(s.source){s.source=false;disposePdf();}}
@@ -631,22 +808,22 @@ window.createStudyExperience = function (ctx) {
   function current(){const d=deck();s.index=Math.min(Math.max(0,s.index),Math.max(d.length-1,0));return d[s.index];}
   function markCount(cards,mark){return cards.filter(c=>(c.mark||'unmarked')===mark).length;}
   function saveCard(id,patch,topicId=s.topicId){return updateLearning(topicId,l=>({...l,flashcards:{...l.flashcards,[id]:{...l.flashcards?.[id],...patch,updatedAt:Date.now()}}}));}
-  function header(){return `<header class="sx-header"><div class="sx-brandline">${action('back',ctx.brand(),'aria-label="返回课程"','sx-brand')}<button class="sx-course-name" data-action="sx-back">${esc(course().name)}</button><span class="sx-divider">/</span><span>${modes.find(m=>m[0]===s.mode)[1]}</span></div><nav class="sx-mode-nav" aria-label="学习模式">${modes.map(([m,n,i])=>action('mode',glyph(i,17)+`<span>${n}</span>`,`data-mode="${m}" aria-current="${m===s.mode?'page':'false'}"`,m===s.mode?'active':'')).join('')}</nav><div class="sx-header-actions">${action('sources',glyph('files',17)+`<span>资料 (${course().materials.length})</span>`,'aria-label="打开课程资料"','sx-source-button')}${ico('back','关闭学习页面','close')}</div></header>`;}
+  function header(){if(s.mode==='learn')return `<header class="sx-header">${action('back',ctx.brand()+'<span>心流物语</span>','aria-label="返回课程"','lr-brand')}<nav class="sx-mode-nav" aria-label="学习模式">${modes.map(([m,n])=>action('mode',`<span>${n}</span>`,`data-mode="${m}" aria-current="${m===s.mode?'page':'false'}"`,m===s.mode?'active':'')).join('')}</nav><div class="sx-header-actions">${action('sources',glyph('files',18)+'<span>教材</span>','aria-label="打开课程资料"','sx-source-button')}${ico('back','关闭学习页面','close')}</div></header><div class="lr-course-bar"><div class="lr-course-title">${esc(course().name)}</div><nav class="lr-course-tabs" aria-label="课程位置">${action('back','课程')}${action('anchor','学习','data-anchor="overview" aria-current="page"')}</nav></div>`;return `<header class="sx-header"><div class="sx-brandline">${action('back',ctx.brand(),'aria-label="返回课程"','sx-brand')}<button class="sx-course-name" data-action="sx-back">${esc(course().name)}</button><span class="sx-divider">/</span><span>${modes.find(m=>m[0]===s.mode)[1]}</span></div><nav class="sx-mode-nav" aria-label="学习模式">${modes.map(([m,n,i])=>action('mode',glyph(i,17)+`<span>${n}</span>`,`data-mode="${m}" aria-current="${m===s.mode?'page':'false'}"`,m===s.mode?'active':'')).join('')}</nav><div class="sx-header-actions">${action('sources',glyph('files',17)+`<span>资料 (${course().materials.length})</span>`,'aria-label="打开课程资料"','sx-source-button')}${ico('back','关闭学习页面','close')}</div></header>`;}
   function topicTree(){let found=0;return course().sections.map((ch,i)=>{const groups=ctx.unitGroups(ch),active=ch.topics.some(t=>t.id===s.topicId);const content=groups.map(u=>{const ts=u.topics.filter(t=>!s.query||(t.number+' '+t.name).toLowerCase().includes(s.query.toLowerCase()));found+=ts.length;if(!ts.length)return '';return `<div class="sx-unit"><div class="sx-unit-title">${esc(u.name)}</div>${ts.map(t=>{const cs=cardsFor(t),cnt=cs.filter(matches).length,pct=cs.length?markCount(cs,'mastered')/cs.length*100:0;return action('topic',`${s.mode==='review'?`<span class="sx-ring" style="--progress:${pct}%"></span>`:glyph(t.completed?'check':'book',15)}<span>${s.mode==='learn'&&t.number?`<small>${esc(t.number)} </small>`:''}${esc(t.name)}</span><small>${s.mode==='review'?cnt:t.completed?'已读':'8 分钟'}</small>`,`data-id="${esc(t.id)}" aria-current="${t.id===s.topicId?'page':'false'}"`,t.id===s.topicId?'active':'');}).join('')}</div>`;}).join('');return content?`<details class="sx-chapter" data-chapter="${esc(ch.id)}" ${(s.query||(s.chapterOpen[ch.id]??(active||s.mode==='review')))?'open':''}><summary><span>${esc(ch.name)}</span>${glyph('down',15)}</summary>${content}</details>`:'';}).join('')||'<p class="sx-empty-small">没有匹配的知识点</p>';}
   function sidebar(){const review=s.mode==='review',cs=all().flatMap(cardsFor),total=cs.length;return `<aside class="sx-sidebar ${s.collapsed?'is-collapsed':''}" aria-label="${review?'闪卡主题':'课程目录'}"><div class="sx-sidebar-heading"><strong>${review?'主题':'课程目录'}</strong>${ico('sidebar','收起目录','panel')}</div>${review?`<div class="sx-filters">${[['all','全部',total],['mastered','已掌握',markCount(cs,'mastered')],['review','需复习',markCount(cs,'review')],['unmarked','未标记',markCount(cs,'unmarked')]].map(([v,n,c])=>action('filter',`${n} <span>${c}</span>`,`data-value="${v}" aria-pressed="${s.filter===v}"`,s.filter===v?'selected':'')).join('')}</div>`:''}<label class="sx-search">${glyph('search',15)}<input id="sx-topic-search" aria-label="筛选知识点" placeholder="筛选知识点" value="${esc(s.query)}"></label><div class="sx-sidebar-scroll">${topicTree()}</div>${review?action('add',glyph('plus',18)+'添加闪卡','','sx-add-card'):action('back',glyph('chevron',15)+'返回知识大纲','','sx-back-outline')}</aside>${s.collapsed?ico('sidebar','展开目录','panel','','sx-open-sidebar'):''}`;}
-  const anchors=[['overview','概览'],['concept','理解概念'],['example','例题与解析'],['practice','检查理解'],['takeaway','要点回顾']];
-  function heading(id,name){return `<h2 id="sx-${id}">${name}${ico('anchor','定位到'+name,'link',`data-anchor="${id}"`)}</h2>`;}
+  let anchors=[];
+  function heading(id,name){return `<h2 id="sx-${id}">${name}${ico('copy-anchor','复制本节链接：'+name,'link',`data-anchor="${id}"`)}</h2>`;}
   function numberLine(){const label=s.number>0?'+'+s.number:String(s.number),kind=s.number>0?'正数':s.number<0?'负数':'既非正数，也非负数';return `<figure class="sx-number-figure"><div class="sx-figure-label"><span>动手试一试</span><output id="sx-number-label">${label} · ${kind}</output></div><svg viewBox="0 0 600 125" role="img" aria-label="可交互数轴，负数在零左侧，正数在零右侧"><path d="M35 72H570m-7-5 8 5-8 5" fill="none" stroke="#5b6878" stroke-width="1.5"/>${Array.from({length:11},(_,i)=>`<path d="M${65+i*46} 65v14" stroke="#9aa4b0"/><text x="${65+i*46}" y="101" text-anchor="middle" font-size="14" fill="#5b6878">${i-5}</text>`).join('')}<g id="sx-number-dot" transform="translate(${295+s.number*46},72)"><circle r="12" fill="#d7e8fd"/><circle r="6" fill="#4285dc"/><text y="-25" text-anchor="middle" fill="#3165aa" font-size="16">${label}</text></g></svg><input type="range" id="sx-number-range" min="-5" max="5" value="${s.number}" aria-label="移动数轴上的点"><figcaption>拖动滑块，观察正数、负数与 0 的位置。</figcaption></figure>`;}
-  function conceptContent(l){const t=topic();if(l?.number==='1.1')return `<p>温度计上的 −3 ℃、账户里的 +20 元，都会用到带符号的数。当我们需要同时表达数量和方向时，只用自然数已经不够了。</p><p><strong>正数和负数用来表示具有相反意义的量。</strong>先选定一种意义为正，与它相反的意义就为负。符号取决于约定，不取决于事情的好坏。</p><div class="sx-definition">像 1、2.5、⅓ 这样大于 0 的数是正数。<br>在正数前面加上“−”号，得到负数，如 −1、−2.5、−⅓。</div><table class="sx-lesson-table"><thead><tr><th>约定正的意义</th><th>正数的例子</th><th>负数的例子</th></tr></thead><tbody><tr><td>向东行走</td><td>+5 米：向东 5 米</td><td>−5 米：向西 5 米</td></tr><tr><td>收入</td><td>+30 元：收入 30 元</td><td>−30 元：支出 30 元</td></tr><tr><td>高于海平面</td><td>+100 米</td><td>−100 米</td></tr></tbody></table>${numberLine()}<div class="sx-callout sx-warning"><strong>注意 0 的位置</strong><p>0 既不是正数，也不是负数。0 ℃ 不表示没有温度，而是温度的一种取值；账户变化为 0 元，表示收支变化为零。</p></div>`;
-    if(!l)return `<p>阅读教材中“${esc(t.name)}”这一节。你可以在右上角打开资料，随时记录自己的理解。</p>`;
-    return `<p>${esc(l.summary)}</p><div class="sx-definition">${esc(l.summary.split('。').filter(Boolean)[0])}。</div><p>先辨认题目中的对象与条件，再使用这一概念。下面用一个具体问题检查如何应用。</p><div class="sx-callout sx-warning"><strong>核对条件</strong><p>${esc(l.flow.explanation)}</p></div>`;
-  }
   function practice(l){
     if(!l)return '<p>本知识点尚无预置练习。</p>';
     const q=l.flow,has=s.choice!==null,correct=s.choice===q.answer;
     return `<div class="sx-check"><h3>${esc(q.question)}</h3><div class="sx-check-choices">${q.choices.map((v,i)=>{const right=has&&i===q.answer,wrong=has&&i===s.choice&&!right;return action('check',`<span class="sx-radio">${right||wrong?glyph(right?'check':'close',13):''}</span>${esc(v)}${right||wrong?`<span class="sr-only">${right?'正确答案':'你的选择，回答错误'}</span>`:''}`,`data-choice="${i}" aria-pressed="${s.choice===i}" ${has?'disabled':''}`,right?'correct':wrong?'wrong':'');}).join('')}</div>${has?`<div class="sx-check-feedback ${correct?'correct':'wrong'}" role="status"><strong>${correct?'回答正确':'回答错误'}</strong><p>${esc(q.explanation)}</p>${action('retry','重新尝试','','sx-text-button')}</div>`:''}</div>`;
   }
-  function learnPage(){const t=topic(),l=lesson(),allTopics=all(),idx=allTopics.findIndex(v=>v.id===t.id),prev=allTopics[idx-1],next=allTopics[idx+1],chapter=course().sections.find(ch=>ch.topics.some(v=>v.id===t.id));return `<div class="sx-learning-content"><article class="sx-article" id="main" tabindex="-1"><div class="sx-breadcrumb">${esc(chapter?.name)} <span>›</span> ${esc(t.unitName||'章节内容')}</div><div class="sx-article-title"><h1>${esc(t.name)}</h1>${ico('bookmark',t.learning?.bookmarked?'取消收藏本节':'收藏本节','star',`aria-pressed="${!!t.learning?.bookmarked}"`,t.learning?.bookmarked?'starred':'')}${ico('copy','复制本节摘要','copy')}</div><div class="sx-lesson-meta"><span>${esc(t.number||'知识点')}</span><span>示例讲解</span>${t.printedPage?`<button data-action="sx-reference">课本 ${t.printedPage} 页 ${glyph('link',13)}</button>`:''}</div><details class="sx-inline-toc"><summary>本页目录${glyph('down',15)}</summary><nav aria-label="页内导航">${anchors.map(([id,n])=>action('anchor',n,`data-anchor="${id}"`)).join('')}</nav></details><section id="sx-overview"><details class="sx-summary"><summary>${glyph('spark',18)}本节摘要${glyph('down',16)}</summary><p>${esc(l?.summary||'结合教材建立对这个知识点的理解。')}</p></details><div class="sx-estimate">${glyph('clock',18)}预计用时：8 分钟</div><p class="sx-intro">${l?.number==='1.1'?'从温度、收支和方向出发，认识正数和负数，学会用带符号的数描述生活中的变化。':`这一节，我们一起理解“${esc(t.name)}”，通过例题和练习，把概念转化为自己的解题思路。`}</p><div class="sx-callout sx-objectives">${glyph('cap',23)}<div><strong>学习目标</strong><ul><li>用自己的话解释${esc(t.name)}。</li><li>识别概念适用的条件。</li><li>独立完成一道相关练习。</li></ul></div></div><div class="sx-prereq"><strong>开始之前</strong><p>${glyph('check',16)}${l?.number==='1.1'?'能比较数的大小，并理解相反意义的量。':'回顾前一节内容，准备纸笔演算。'}</p></div></section><section>${heading('concept','理解概念')}${conceptContent(l)}</section><section>${heading('example','例题与解析')}${l?`<div class="sx-worked"><span>例题</span><h3>${esc(l.diagnostic.question)}</h3><ol><li><strong>明确条件</strong><p>${esc(l.summary.split('。')[0])}。</p></li><li><strong>分析与应用</strong><p>${esc(l.diagnostic.explanation)}</p></li><li><strong>得到结论</strong><p class="sx-equation">${esc(l.diagnostic.choices[l.diagnostic.answer])}</p></li></ol></div>`:'<p>打开教材中的例题，记录每一步推导。</p>'}</section><section>${heading('practice','检查理解')}<p>独立想一想，再选择答案。</p>${practice(l)}</section><section>${heading('takeaway','要点回顾')}<div class="sx-takeaway">${l?l.summary.split('。').filter(Boolean).map(p=>`<p>${glyph('check',16)}<span>${esc(p)}。</span></p>`).join(''):'回到教材，用自己的语言整理关键概念。'}</div><div class="sx-reading-tools">${action('note',glyph('note',17)+'学习笔记','','sx-text-button')}${action('read',glyph(t.completed?'check':'book',17)+(t.completed?'已读完':'标记为已读'),`aria-pressed="${!!t.completed}"`,'sx-text-button')}</div><div class="sx-continue"><div><strong>把理解变成记忆</strong><p>用闪卡回想本节的关键概念。</p></div>${action('mode','开始复习 '+glyph('chevron',17),'data-mode="review"','sx-primary')}</div></section><nav class="sx-lesson-pagination" aria-label="前后知识点">${prev?action('topic',`<small>上一节</small><strong>← ${esc(prev.name)}</strong>`,`data-id="${esc(prev.id)}"`):'<span></span>'}${next?action('topic',`<small>下一节</small><strong>${esc(next.name)} →</strong>`,`data-id="${esc(next.id)}"`):action('back','返回课程 →')}</nav><footer class="sx-article-footer">讲解与练习为预置示例，可结合教材核对。</footer></article>${chat.render()}</div>`;}
+  function learnPage(){
+    const t=topic(),l=lesson(),allTopics=all(),idx=allTopics.findIndex(v=>v.id===t.id),prev=allTopics[idx-1],next=allTopics[idx+1],chapter=course().sections.find(ch=>ch.topics.some(v=>v.id===t.id));
+    const article=window.learningArticle({esc,glyph,action,heading,practice,numberLine,topic:t,lesson:l});anchors=article.anchors;
+    return `<div class="sx-learning-content"><article class="sx-article" id="main" tabindex="-1"><div class="lr-utility"><nav class="sx-breadcrumb" aria-label="当前位置">${action('back','课程')}<span>›</span><span>${esc(chapter?.name||'知识大纲')}</span><span>›</span><span>${esc(t.unitName||t.name)}</span></nav>${t.printedPage?action('reference',`课本 ${t.printedPage} 页 `+glyph('link',14),'','lr-reference'):''}</div><div class="sx-article-title"><h1>${esc(t.name)}</h1>${ico('bookmark',t.learning?.bookmarked?'取消收藏本节':'收藏本节','star',`aria-pressed="${!!t.learning?.bookmarked}"`,t.learning?.bookmarked?'starred':'')}${ico('copy','复制本页内容','copy')}${action('note','记笔记','','lr-note-button')}</div><div id="sx-overview"><details class="sx-summary" id="lr-summary"><summary>${glyph('spark',18)}本节摘要${glyph('down',16)}</summary>${article.summary}</details>${article.overview}</div>${article.body}${article.terms}<div class="sx-reading-tools">${action('read',glyph(t.completed?'check':'book',17)+(t.completed?'已读完':'标记为已读'),`aria-pressed="${!!t.completed}"`,'sx-text-button')}${action('mode',glyph('cards',17)+'复习本节','data-mode="review"','sx-text-button')}</div><nav class="sx-lesson-pagination" aria-label="前后知识点">${prev?action('topic',`<small>上一节</small><strong>${esc(prev.name)}</strong>`,`data-id="${esc(prev.id)}"`):'<span></span>'}${next?action('topic',`<small>下一节</small><strong>${esc(next.name)}</strong>`,`data-id="${esc(next.id)}"`):action('back','返回课程')}</nav><footer class="sx-article-footer">讲解与练习为预置示例。教材原文可从右上角打开。</footer></article><details class="lr-toc sx-toc" id="lr-page-toc"><summary aria-label="本页内容" title="本页内容">${glyph('list',17)}<span>本页内容</span></summary><nav aria-label="页内导航">${anchors.map(([id,n])=>action('anchor',esc(n),`data-anchor="${id}"`)).join('')}</nav></details>${chat.render()}</div>`;
+  }
   function cardText(c,side){return c[side+'Html']?sanitize(c[side+'Html']):esc(c[side]||'').replace(/\n/g,'<br>');}
   function cardTools(c){return `<div class="sx-card-tools">${ico('edit','编辑闪卡','edit',`data-card="${esc(c.id)}"`)}${ico('star',c.starred?'取消收藏闪卡':'收藏闪卡','star',`data-card="${esc(c.id)}" aria-pressed="${!!c.starred}"`,c.starred?'starred':'')}</div>`;}
   function cardView(){const d=deck(),c=current();if(!c)return emptyCards();if(s.done)return `<div class="sx-session-done"><span>${glyph('check',38)}</span><h2>本轮复习完成</h2><p>已回想 ${s.seen.size} 张卡片</p><div><b>${markCount(cardsFor(topic()),'mastered')}</b> 已掌握 <b>${markCount(cardsFor(topic()),'review')}</b> 需复习</div>${action('restart','再复习一轮','','sx-primary')}${s.undo?action('undo','撤销上一次标记','','sx-text-button'):''}</div>`;
@@ -660,7 +837,9 @@ window.createStudyExperience = function (ctx) {
   function sourcePanel(){const m=sourceMaterial();return `<aside class="sx-source-panel" aria-label="教材资料"><header><h2>教材与习题</h2>${ico('sources','关闭资料','close')}</header><label class="sx-source-select"><span class="sr-only">选择资料</span><select id="sx-material-select">${course().materials.map(v=>`<option value="${esc(v.id)}" ${v.id===m?.id?'selected':''}>${v.type==='textbook'?'教材':'习题'} · ${esc(v.name)}</option>`).join('')}</select></label><div class="sx-pdf-toolbar">${ico('pdf-prev','教材上一页','chevron','','sx-reverse')}<label><input id="sx-pdf-page" type="number" min="1" max="${pdf?.numPages||9999}" value="${s.sourcePage}" aria-label="教材页码"><span>/ ${pdf?.numPages||'—'}</span></label>${ico('pdf-next','教材下一页','chevron')}${ico('expand-pdf','放大阅读教材','book')}</div><div id="sx-source-body" class="sx-source-body"><p class="sx-source-state" role="status">正在读取教材…</p><canvas id="sx-source-canvas" hidden aria-label="教材原文页面" role="img"></canvas></div><footer>${topic().printedPage?`本节：课本 ${topic().printedPage} 页`:'教材原始文件'}${action('materials','管理资料','','sx-text-button')}</footer></aside>`;}
   function askPanel(){return `<aside class="sx-question-panel" aria-label="学习疑问"><header><h2>记录疑问</h2>${ico('ask','关闭疑问','close')}</header><p>${esc(topic().name)}</p><label class="field"><span>哪里还不理解？</span><textarea id="sx-question" rows="7" maxlength="10000" placeholder="写下你的问题，下次阅读时继续思考。">${esc(topic().note||'')}</textarea></label>${action('save-question','保存到学习笔记','','sx-primary')}<small>AI 追问待接入，当前保存为本机笔记。</small></aside>`;}
   function render(){return `<div class="sx-app sx-${s.mode} ${s.collapsed?'sx-nav-collapsed':''} ${s.source?'sx-has-source':''}">${header()}${!s.collapsed?action('sidebar','','aria-label="关闭课程目录"','sx-directory-backdrop'):''}${action('sidebar',glyph('panel',15)+'课程目录',`aria-label="切换课程目录" aria-expanded="${!s.collapsed}"`,'sx-mobile-directory')}<div class="sx-workspace">${sidebar()}${s.mode==='learn'?learnPage():s.mode==='review'?reviewPage():assessmentPage()}</div>${s.source?sourcePanel():''}${s.ask?askPanel():''}</div>`;}
-  function afterRender(){trackExposure();observer?.disconnect();if(s.mode==='learn'){observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){const id=e.target.id.replace('sx-','');document.querySelectorAll('.sx-toc [data-anchor]').forEach(b=>b.classList.toggle('active',b.dataset.anchor===id));}},{rootMargin:'-90px 0px -65% 0px'});for(const [id] of anchors){const el=document.getElementById('sx-'+id);if(el)observer.observe(el);}}if(s.source)void drawSource();if(s.mode==='learn')chat.mount();if(s.mode==='tale'||s.mode==='flow')adaptive.mount();}
+  function syncReadingRails(){const root=document.querySelector('.sx-learn'),bar=root?.querySelector('.lr-course-bar');if(root&&bar)root.style.setProperty('--lr-nav-top',Math.max(48,bar.getBoundingClientRect().bottom)+'px');}
+  document.addEventListener('scroll',syncReadingRails,{passive:true});
+  function afterRender(){syncReadingRails();trackExposure();observer?.disconnect();if(s.mode==='learn'){observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){const id=e.target.id.replace('sx-','');document.querySelectorAll('.sx-toc [data-anchor]').forEach(b=>b.classList.toggle('active',b.dataset.anchor===id));}},{rootMargin:'-90px 0px -65% 0px'});for(const [id] of anchors){const el=document.getElementById('sx-'+id);if(el)observer.observe(el);}}if(s.source)void drawSource();if(s.mode==='learn')chat.mount();if(s.mode==='tale'||s.mode==='flow')adaptive.mount();}
   function disposePdf(){pdfGeneration++;pdfRenderToken++;pdfLoadTask?.destroy().catch(()=>{});pdfLoadTask=null;pdf?.destroy().catch(()=>{});pdf=null;pdfId=null;pdfLoading=null;}
   async function drawSource(){const token=++pdfRenderToken,m=sourceMaterial(),body=document.getElementById('sx-source-body');if(!body)return;
     const fail=message=>{if(token===pdfRenderToken&&body.isConnected)body.innerHTML=`<div class="sx-source-empty">${glyph('files',32)}<p>${esc(message)}</p>${action('materials','管理资料','','sx-primary')}</div>`;};
@@ -700,8 +879,9 @@ window.createStudyExperience = function (ctx) {
     case 'retry':s.choice=null;redraw();break;
     case 'answer':s.choice=Number(target.dataset.choice);ctx.answer(s.topicId,s.mode,s.choice);break;
     case 'bookmark':if(updateLearning(s.topicId,l=>({...l,bookmarked:!l.bookmarked})))redraw();break;
-    case 'copy':{const t=topic(),l=lesson();navigator.clipboard.writeText(`# ${t.name}\n\n${l?.summary||t.note||''}`).then(()=>ctx.toast('摘要已复制')).catch(()=>ctx.toast('当前浏览器不允许访问剪贴板'));break;}
-    case 'anchor':document.getElementById('sx-'+target.dataset.anchor)?.scrollIntoView({behavior:'smooth',block:'start'});break;
+    case 'copy':{const article=document.querySelector('.sx-article')?.cloneNode(true);article?.querySelectorAll('.lr-inline-link').forEach(el=>el.replaceWith(document.createTextNode(el.textContent)));article?.querySelectorAll('button,nav,footer,.lr-utility,.sx-reading-tools').forEach(el=>el.remove());article?.querySelectorAll('h1,h2,h3,p,li,tr,figcaption,summary').forEach(el=>el.append(document.createTextNode('\n')));const text=article?.textContent||lesson()?.summary||topic().name;navigator.clipboard.writeText(text.trim()).then(()=>ctx.toast('本页内容已复制')).catch(()=>ctx.toast('当前浏览器不允许访问剪贴板'));break;}
+    case 'anchor':document.getElementById('sx-'+target.dataset.anchor)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});break;
+    case 'copy-anchor':{const url=new URL(location.href);url.searchParams.set('section',target.dataset.anchor);url.searchParams.set('sectionTopic',s.topicId);navigator.clipboard.writeText(url.href).then(()=>ctx.toast('本节链接已复制')).catch(()=>ctx.toast('无法访问剪贴板'));break;}
     case 'read':if(updateTopic(s.topicId,t=>({...t,completed:!t.completed})))redraw();break;
     case 'note':ctx.note(s.topicId);break;
     case 'reference':s.source=true;s.sourceId=topic().sourceMaterialId||topic().materialId;s.sourcePage=topic().sourcePdfPage||topic().sourceTocPage||1;s.ask=false;redraw();break;
@@ -940,7 +1120,8 @@ async function fileStore(action,items){if(!items.length)return;const database=aw
 function toast(message,undo){clearTimeout(toastTimer);undoAction=undo||null;const el=document.getElementById('toast');el.innerHTML=`<span>${esc(message)}</span>${undo?'<button data-action="undo">撤销</button>':''}`;el.classList.add('visible');toastTimer=setTimeout(()=>{el.classList.remove('visible');undoAction=null;},undo?10000:4000);}
 function route(view,id){const hash=id?`#course/${encodeURIComponent(id)}`:`#${view}`;if(location.hash===hash)readRoute();else location.hash=hash;}
 function studyRoute(id,mode='learn'){if(!findTopic(id))return;closeDialog();const hash=`#course/${encodeURIComponent(state.courseId)}/${mode}/${encodeURIComponent(id)}`;if(location.hash===hash)readRoute();else location.hash=hash;}
-function readRoute(){const h=location.hash.slice(1);state.menu=null;state.query='';state.materialFilter='all';if(dialog.open)closeDialog();if(h.startsWith('course/')){let parts=[];try{parts=h.split('/').map(decodeURIComponent);}catch{}state.courseId=parts[1]||null;state.view=data.courses.some(c=>c.id===state.courseId)?'course':'home';if(state.view==='course'&&lessonModes.some(m=>m[0]===parts[2])&&findTopic(parts[3])){state.view='study';learningView={topicId:parts[3],mode:parts[2]};study.enter(parts[3],parts[2]);}}else{state.view=['store','tools','community'].includes(h)?h:'home';state.courseId=null;}if(state.view!=='study')study.leave();render();window.scrollTo(0,0);requestAnimationFrame(()=>window.scrollTo(0,0));}
+let initialReadingAnchor=true;
+function readRoute(){const h=location.hash.slice(1);state.menu=null;state.query='';state.materialFilter='all';if(dialog.open)closeDialog();if(h.startsWith('course/')){let parts=[];try{parts=h.split('/').map(decodeURIComponent);}catch{}state.courseId=parts[1]||null;state.view=data.courses.some(c=>c.id===state.courseId)?'course':'home';if(state.view==='course'&&lessonModes.some(m=>m[0]===parts[2])&&findTopic(parts[3])){state.view='study';learningView={topicId:parts[3],mode:parts[2]};study.enter(parts[3],parts[2]);}}else{state.view=['store','tools','community'].includes(h)?h:'home';state.courseId=null;}if(state.view!=='study')study.leave();render();window.scrollTo(0,0);requestAnimationFrame(()=>{window.scrollTo(0,0);if(initialReadingAnchor){initialReadingAnchor=false;const query=new URLSearchParams(location.search),section=query.get('section');if(state.view==='study'&&learningView.mode==='learn'&&query.get('sectionTopic')===learningView.topicId&&/^[a-z-]+$/.test(section||''))document.getElementById('sx-'+section)?.scrollIntoView({block:'start'});}});}
 
 function brand(){return '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 24c3-9 7-12 11-8s7 3 11-6M9 30c8-2 12-9 22-8M11 8c7-5 18 0 21 8 4 11-6 20-17 17C3 30 1 16 11 8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';}
 function shell(content){return `<aside class="rail" aria-label="主导航"><button class="brand-mark" data-action="home" aria-label="心流物语首页">${brand()}</button><nav class="rail-nav">${[['home','home','课程'],['community','users','学习社群'],['store','gift','积分商城'],['tools','tools','工具箱']].map(([v,i,n])=>`<button class="nav-button ${state.view===v||(v==='home'&&state.view==='course')?'active':''}" data-action="${v}" ${state.view===v?'aria-current="page"':''}>${icon(i,22)}<span>${n}</span></button>`).join('')}</nav><div class="rail-bottom"><button class="icon-btn" data-action="help" aria-label="使用说明">${icon('help',21)}</button><button class="icon-btn" data-action="theme" aria-label="切换为${data.theme==='dark'?'浅色':'深色'}模式">${icon(data.theme==='dark'?'sun':'moon',21)}</button><button class="avatar" data-action="profile" aria-label="个人设置">${esc(data.name.slice(0,1))}</button></div></aside><div class="shell"><main class="main minimal-main" id="main" tabindex="-1">${content}</main></div>`;}

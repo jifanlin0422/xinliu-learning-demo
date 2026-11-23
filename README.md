@@ -11,3 +11,9 @@
 示例课程附带完整的157页教材，课程阅读器和学习页教材面板均可直接打开。29个知识点已核对PDF页码；学习页打开资料时定位到本节。原来没有文件的讲义、练习等占位条目已移除；访客自己上传的材料与学习记录保留。
 
 `index.html` 是主页面，`runner-demo.html` 是独立动画演示，PDF.js 许可保留在 `PDFJS-LICENSE.txt`。
+
+## 2026-11-24 学习页参考对齐
+
+学习页使用 Google ML Crash Course Loss 页的阅读布局：双层页头、正文、可收起课程目录及页内导航，蓝色摘要、图表、展开说明和原位选择题反馈。数学正文为原创示例，不是 Google 课程内容。首节“正数和负数”有完整图文示例，其他知识点沿用已有简短内容。边栏仍默认收起。AI 对话入口保留，公开版服务尚未接通。
+
+公开源码在 `../learning-workspace/src`，已从上一版线上构建完整恢复 PDF 和热力图修复。运行 `python3 ../learning-workspace/build-public.py` 可复现构建；发布时同步 dist 静态文件并保留 materials 与 .nojekyll。
