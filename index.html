@@ -176,6 +176,20 @@ window.extractCourseOutline=async function(blob,onProgress=()=>{}){
 window.BundledMaterials=(()=>{
  const assets=Object.freeze({'sample-math-book':'materials/beijing-math-grade7-2025.pdf'}),pending=new Map();
  const has=id=>Object.prototype.hasOwnProperty.call(assets,id);
+ let publicSource;
+ async function assetURL(id){
+  const local=new URL(assets[id],document.baseURI).href;
+  if(location.hostname!=='jifanlin0422.github.io')return local;
+  // Same public textbook, served by GitHub's file CDN; keep Pages as a fallback.
+  if(!publicSource)publicSource=(async()=>{
+   const remote='https://raw.githubusercontent.com/jifanlin0422/xinliu-learning-demo/main/materials/beijing-math-grade7-2025.pdf';
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),6000);
+   try{const response=await fetch(remote,{method:'HEAD',credentials:'omit',signal:controller.signal});return response.ok?remote:local;}
+   catch{return local;}finally{clearTimeout(timer);}
+  })();
+  return publicSource;
+ }
+
  function read(id){
   if(!has(id))return Promise.resolve(null);
   if(pending.has(id))return pending.get(id);
@@ -183,7 +197,7 @@ window.BundledMaterials=(()=>{
    if(location.protocol==='file:')throw Error('请通过网站地址打开示例教材，或添加本地 PDF。');
    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),90000);
    try{
-    const response=await fetch(new URL(assets[id],document.baseURI),{signal:controller.signal,credentials:'omit',redirect:'error'});
+    const response=await fetch(await assetURL(id),{signal:controller.signal,credentials:'omit',redirect:'error'});
     if(!response.ok)throw Error('教材暂时没有加载成功，请稍后重试。');
     const blob=await response.blob();
     if(!blob.size||blob.size>30*1024*1024||(await blob.slice(0,5).text())!=='%PDF-')throw Error('教材文件不完整，请重新打开。');
@@ -193,12 +207,12 @@ window.BundledMaterials=(()=>{
   })();
   pending.set(id,task);task.catch(()=>pending.delete(id));return task;
  }
- const documentSource=id=>has(id)?{url:new URL(assets[id],document.baseURI).href,disableAutoFetch:true,disableStream:true,rangeChunkSize:262144}:null;
+ const documentSource=async id=>has(id)?{url:await assetURL(id),disableAutoFetch:true,disableStream:true,rangeChunkSize:262144}:null;
  return Object.freeze({has,read,documentSource});
 })();
 
 window.pdfSourceFor=async function(id,readFile){
- const shipped=window.BundledMaterials.documentSource(id);
+ const shipped=await window.BundledMaterials.documentSource(id);
  if(shipped){if(location.protocol==='file:')throw Error('请通过网站地址打开示例教材，或添加本地 PDF。');return shipped;}
  const item=await readFile(id);if(!item?.blob)throw Error('教材文件不可用，请重新添加。');
  return {data:new Uint8Array(await item.blob.arrayBuffer())};
